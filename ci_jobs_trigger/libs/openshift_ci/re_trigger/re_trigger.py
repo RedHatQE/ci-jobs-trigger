@@ -5,10 +5,10 @@ import requests
 import shortuuid
 import xmltodict
 import yaml
-from timeout_sampler import TimeoutSampler
+from timeout_sampler import TimeoutSampler, TimeoutExpiredError
 
 from ci_jobs_trigger.libs.openshift_ci.re_trigger.job_db import DB
-from ci_jobs_trigger.libs.openshift_ci.utils.constants import GANGWAY_API_URL, PROW_LOGS_URL_PREFIX
+from ci_jobs_trigger.libs.openshift_ci.utils.constants import GANGWAY_API_URL, PROW_LOGS_URL_PREFIX, WAIT_30MIN
 from ci_jobs_trigger.utils.general import OpenshiftCiReTriggerError, send_slack_message
 from ci_jobs_trigger.libs.openshift_ci.utils.general import (
     get_authorization_header,
@@ -78,12 +78,20 @@ class JobTriggering:
             junit_xml=self.get_tests_from_junit_operator_by_build_id()
         )
         if self.is_build_failed_on_setup(tests_dict=tests_dict):
-            prow_job_id = self._trigger_job()
             send_slack_message(
-                message=f"{self.slack_msg_prefix}Job failed during `pre phase`, re-triggering job",
+                message=f"{self.slack_msg_prefix}Job failed during `pre phase`, re-triggering job in {WAIT_30MIN / 60} minutes",
                 webhook_url=self.slack_webhook_url,
                 logger=self.logger,
             )
+            sleep_time = int(WAIT_30MIN / 3)
+            try:
+                sampler = TimeoutSampler(wait_timeout=WAIT_30MIN, sleep=sleep_time, func=lambda: False)
+                for sample in sampler:
+                    if sample:
+                        break
+            except TimeoutExpiredError:
+                pass
+            prow_job_id = self._trigger_job()
 
             with DB(job_db_path=job_db_path) as database:
                 database.write(job_name=self.job_name, prow_job_id=prow_job_id)
