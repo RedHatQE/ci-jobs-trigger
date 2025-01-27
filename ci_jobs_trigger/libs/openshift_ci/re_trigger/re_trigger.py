@@ -80,7 +80,7 @@ class JobTriggering:
         )
         if self.is_build_failed_on_setup(tests_dict=tests_dict):
             send_slack_message(
-                message=f"{self.slack_msg_prefix}Job failed during `pre phase`, re-triggering job in {WAIT_30MIN / 60} minutes",
+                message=f"{self.slack_msg_prefix}Job failed during `pre phase`, re-triggering job in {int(WAIT_30MIN / 60)} minutes",
                 webhook_url=self.slack_webhook_url,
                 logger=self.logger,
             )
