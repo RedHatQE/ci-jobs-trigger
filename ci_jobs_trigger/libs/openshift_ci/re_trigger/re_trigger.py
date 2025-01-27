@@ -1,11 +1,12 @@
 import json
+import time
 import xml
 
 import requests
 import shortuuid
 import xmltodict
 import yaml
-from timeout_sampler import TimeoutSampler, TimeoutExpiredError
+from timeout_sampler import TimeoutSampler
 
 from ci_jobs_trigger.libs.openshift_ci.re_trigger.job_db import DB
 from ci_jobs_trigger.libs.openshift_ci.utils.constants import GANGWAY_API_URL, PROW_LOGS_URL_PREFIX, WAIT_30MIN
@@ -83,14 +84,8 @@ class JobTriggering:
                 webhook_url=self.slack_webhook_url,
                 logger=self.logger,
             )
-            sleep_time = int(WAIT_30MIN / 3)
-            try:
-                sampler = TimeoutSampler(wait_timeout=WAIT_30MIN, sleep=sleep_time, func=lambda: False)
-                for sample in sampler:
-                    if sample:
-                        break
-            except TimeoutExpiredError:
-                pass
+            self.logger.info(f"{self.log_prefix} Sleeping for {int(WAIT_30MIN / 60)} minutes before re-triggering")
+            time.sleep(WAIT_30MIN)
             prow_job_id = self._trigger_job()
 
             with DB(job_db_path=job_db_path) as database:
