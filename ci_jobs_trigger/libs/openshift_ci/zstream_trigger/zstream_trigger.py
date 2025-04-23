@@ -1,24 +1,23 @@
 from __future__ import annotations
+
+import datetime
 import json
 import logging
 import time
-import datetime
-import yaml
-
-from croniter import CroniterBadCronError, croniter
-from pyhelper_utils.general import stt, tts
 from typing import Dict, List
 
-from ocp_utilities.cluster_versions import get_accepted_cluster_versions
+import packaging.version
+import yaml
+from croniter import CroniterBadCronError, croniter
 from ocm_python_wrapper.ocm_client import OCMPythonClient
+from ocp_utilities.cluster_versions import get_accepted_cluster_versions
+from pyhelper_utils.general import stt, tts
 from rosa.rosa_versions import get_rosa_versions
 from semver import Version
-import packaging.version
 
+from ci_jobs_trigger.libs.openshift_ci.utils.general import openshift_ci_trigger_job
 from ci_jobs_trigger.utils.constant import DAYS_TO_SECONDS
 from ci_jobs_trigger.utils.general import get_config, get_gitlab_api, send_slack_message
-from ci_jobs_trigger.libs.openshift_ci.utils.general import openshift_ci_trigger_job
-
 
 OPENSHIFT_CI_ZSTREAM_TRIGGER_CONFIG_OS_ENV_STR: str = "OPENSHIFT_CI_ZSTREAM_TRIGGER_CONFIG"
 LOG_PREFIX: str = "Zstream trigger:"
@@ -293,7 +292,7 @@ def monitor_and_trigger(logger: logging.Logger) -> None:
     while True:
         try:
             if cron:
-                run_interval = int((cron.get_next(datetime.datetime) - datetime.datetime.now()).total_seconds())
+                run_interval = int((cron.get_next(datetime.datetime) - datetime.datetime.now()).total_seconds())  # type: ignore
 
             if run_interval > 0:
                 logger.info(f"{LOG_PREFIX} Sleeping for {stt(seconds=run_interval)}...")
