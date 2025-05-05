@@ -1,4 +1,4 @@
-FROM python:3.12
+FROM python:3.13
 EXPOSE 5000
 
 ENV PRE_COMMIT_HOME=/tmp
