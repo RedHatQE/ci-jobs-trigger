@@ -1,9 +1,8 @@
 import copy
 
 import pytest
-from simple_logger.logger import get_logger
-
 import xmltodict
+from simple_logger.logger import get_logger
 
 from ci_jobs_trigger.libs.openshift_ci.re_trigger.re_trigger import JobTriggering
 
@@ -90,7 +89,7 @@ class TestJobTriggering:
             return_value=junit_file,
         )
 
-        assert job_triggering.execute_trigger(job_db_path=db_filepath), "Job should be triggered"
+        assert job_triggering.execute_trigger(job_db_path=db_filepath, retrigger_timeout=1), "Job should be triggered"
 
     def test_already_triggered(self, db_filepath, hook_data_dict):
         hook_data_dict["prow_job_id"] = TestJobTriggering.PROW_JOB_ID
