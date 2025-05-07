@@ -10,11 +10,11 @@ from timeout_sampler import TimeoutSampler
 
 from ci_jobs_trigger.libs.openshift_ci.re_trigger.job_db import DB
 from ci_jobs_trigger.libs.openshift_ci.utils.constants import GANGWAY_API_URL, PROW_LOGS_URL_PREFIX, WAIT_30MIN
-from ci_jobs_trigger.utils.general import OpenshiftCiReTriggerError, send_slack_message
 from ci_jobs_trigger.libs.openshift_ci.utils.general import (
     get_authorization_header,
     openshift_ci_trigger_job,
 )
+from ci_jobs_trigger.utils.general import OpenshiftCiReTriggerError, send_slack_message
 
 
 class JobTriggering:
@@ -54,7 +54,7 @@ class JobTriggering:
         if not all((self.trigger_token, self.job_name, self.build_id, self.prow_job_id)):
             raise ValueError(f"{self.log_prefix} Missing parameters")
 
-    def execute_trigger(self, job_db_path=None):
+    def execute_trigger(self, job_db_path=None, retrigger_timeout=WAIT_30MIN):
         with DB(job_db_path=job_db_path) as database:
             if database.check_prow_job_id_in_db(job_name=self.job_name, prow_job_id=self.prow_job_id):
                 self.logger.warning(f"{self.log_prefix} Job was already auto-triggered. Exiting.")
@@ -80,12 +80,14 @@ class JobTriggering:
         )
         if self.is_build_failed_on_setup(tests_dict=tests_dict):
             send_slack_message(
-                message=f"{self.slack_msg_prefix}Job failed during `pre phase`, re-triggering job in {int(WAIT_30MIN / 60)} minutes",
+                message=f"{self.slack_msg_prefix}Job failed during `pre phase`, re-triggering job in {int(retrigger_timeout / 60)} minutes",
                 webhook_url=self.slack_webhook_url,
                 logger=self.logger,
             )
-            self.logger.info(f"{self.log_prefix} Sleeping for {int(WAIT_30MIN / 60)} minutes before re-triggering")
-            time.sleep(WAIT_30MIN)
+            self.logger.info(
+                f"{self.log_prefix} Sleeping for {int(retrigger_timeout / 60)} minutes before re-triggering"
+            )
+            time.sleep(retrigger_timeout)
             prow_job_id = self._trigger_job()
 
             with DB(job_db_path=job_db_path) as database:
