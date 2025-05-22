@@ -52,9 +52,9 @@ python-jenkins = "^1.8.2"
 redhat-qe-cloud-tools = "^2.0.0"
 pyaml-env = "^1.2.1"
 croniter = "^2.0.5"
-pyhelper-utils = "^0.0.15"
+pyhelper-utils = "*"
 openshift-cluster-management-python-wrapper = "^1.0.133"
-rosa-python-client = "^1.0.115"
+rosa-python-client = "*"
 
 
 [tool.poetry.group.dev.dependencies]
