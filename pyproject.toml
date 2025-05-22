@@ -39,22 +39,22 @@ packages = [{ include = "ci_jobs_trigger" }]
 
 [tool.poetry.dependencies]
 python = "^3.9"
-openshift-python-utilities = "^5.0.26"
+openshift-python-utilities = "^6.0.0"
 requests = "^2.31.0"
 semver = "^3.0.2"
 flask = "^3.0.2"
-python-simple-logger = "^1.0.12"
+python-simple-logger = "^2.0.0"
 shortuuid = "^1.0.11"
 gitpython = "^3.1.42"
 pygithub = "^2.2.0"
-python-gitlab = "^4.4.0"
+python-gitlab = "^5.0.0"
 python-jenkins = "^1.8.2"
-redhat-qe-cloud-tools = "^1.0.47"
+redhat-qe-cloud-tools = "^2.0.0"
 pyaml-env = "^1.2.1"
 croniter = "^2.0.5"
-pyhelper-utils = "^0.0.15"
+pyhelper-utils = "*"
 openshift-cluster-management-python-wrapper = "^1.0.133"
-rosa-python-client = "^1.0.115"
+rosa-python-client = "*"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -64,7 +64,7 @@ ipython = "*"
 
 [tool.poetry.group.tests.dependencies]
 pytest = "^8.0.1"
-pytest-cov = "^5.0.0"
+pytest-cov = "^6.0.0"
 pytest-mock = "^3.12.0"
 
 [tool.poetry-dynamic-versioning]
