@@ -85,19 +85,19 @@ azure-core = ">=1.31.0"
 
 [[package]]
 name = "azure-mgmt-network"
-version = "28.1.0"
+version = "29.0.0"
 description = "Microsoft Azure Network Management Client Library for Python"
 optional = false
-python-versions = ">=3.8"
+python-versions = ">=3.9"
 groups = ["main"]
 files = [
-    {file = "azure_mgmt_network-28.1.0-py3-none-any.whl", hash = "sha256:8ddb0e9ec8f10c9c152d60fc945908d113e4591f397ea3e40b92290ec2b01658"},
-    {file = "azure_mgmt_network-28.1.0.tar.gz", hash = "sha256:8c84bffb5ec75c6e0244e58ecf07c00d5fc421d616b0cb369c6fe585af33cf87"},
+    {file = "azure_mgmt_network-29.0.0-py3-none-any.whl", hash = "sha256:c04dc0d9f6b936abe4ec7c5fa9cee1514795b1f84d2742dead2115dcde33476c"},
+    {file = "azure_mgmt_network-29.0.0.tar.gz", hash = "sha256:577fbc76a195f744b97bac4275e11279f7f3e63c659d98773f3b4a9a6e0943b9"},
 ]
 
 [package.dependencies]
 azure-common = ">=1.1"
-azure-mgmt-core = ">=1.3.2"
+azure-mgmt-core = ">=1.5.0"
 isodate = ">=0.6.1"
 typing-extensions = ">=4.6.0"
 
@@ -121,14 +121,14 @@ typing-extensions = ">=4.6.0"
 
 [[package]]
 name = "azure-mgmt-resource"
-version = "23.4.0"
+version = "24.0.0"
 description = "Microsoft Azure Resource Management Client Library for Python"
 optional = false
 python-versions = ">=3.9"
 groups = ["main"]
 files = [
-    {file = "azure_mgmt_resource-23.4.0-py3-none-any.whl", hash = "sha256:17282d20dc643fb68a286c2c350a191dc3bf386827f65a7daeeb714367a19316"},
-    {file = "azure_mgmt_resource-23.4.0.tar.gz", hash = "sha256:7cc0909184bd01439e245f5f2e20945a3668d45a6774e1f008227bb33a733d16"},
+    {file = "azure_mgmt_resource-24.0.0-py3-none-any.whl", hash = "sha256:27b32cd223e2784269f5a0db3c282042886ee4072d79cedc638438ece7cd0df4"},
+    {file = "azure_mgmt_resource-24.0.0.tar.gz", hash = "sha256:cf6b8995fcdd407ac9ff1dd474087129429a1d90dbb1ac77f97c19b96237b265"},
 ]
 
 [package.dependencies]
@@ -1746,13 +1746,13 @@ timeout-sampler = ">=0.0.2"
 
 [[package]]
 name = "openshift-python-utilities"
-version = "6.0.12"
+version = "6.0.13"
 description = "A utilities repository for https://github.com/RedHatQE/openshift-python-wrapper"
 optional = false
 python-versions = "~=3.9"
 groups = ["main"]
 files = [
-    {file = "openshift_python_utilities-6.0.12.tar.gz", hash = "sha256:900a778f73ad9af6c83f47d0fa1c8b4452bcfa5a145f3e476f0f25b77e36b54f"},
+    {file = "openshift_python_utilities-6.0.13.tar.gz", hash = "sha256:41f2ea185531367d4b29a7aadc6618e39d522c6d8e0af068f53a22a98100877d"},
 ]
 
 [package.dependencies]
@@ -2352,13 +2352,13 @@ six = "*"
 
 [[package]]
 name = "python-simple-logger"
-version = "2.0.13"
+version = "2.0.14"
 description = "A simple logger for python"
 optional = false
 python-versions = "~=3.9"
 groups = ["main"]
 files = [
-    {file = "python_simple_logger-2.0.13.tar.gz", hash = "sha256:24f66784e48f6fa635de9d0d9738e41516adebfb930b4ee88b938ca06bbb18e9"},
+    {file = "python_simple_logger-2.0.14.tar.gz", hash = "sha256:1fa30c1929ab73a2b1f0fb701dc426b960785962224d386bec370cd77ee3f29f"},
 ]
 
 [package.dependencies]
@@ -2463,21 +2463,21 @@ files = [
 
 [[package]]
 name = "redhat-qe-cloud-tools"
-version = "2.0.16"
+version = "2.0.17"
 description = "Python utilities to manage cloud services, such as AWS."
 optional = false
 python-versions = "<4.0,>=3.9"
 groups = ["main"]
 files = [
-    {file = "redhat_qe_cloud_tools-2.0.16.tar.gz", hash = "sha256:29c86a7481d5bf95d54566112044a8a80939cc221fe09ab372b9c4f6726a2612"},
+    {file = "redhat_qe_cloud_tools-2.0.17.tar.gz", hash = "sha256:bda0398062acea3a3879effc2ff4f92202ea568ef3982b12e82c12db35971b06"},
 ]
 
 [package.dependencies]
 azure-core = ">=1.30.1,<2.0.0"
 azure-identity = ">=1.15.0,<2.0.0"
-azure-mgmt-network = ">=28.0.0,<29.0.0"
+azure-mgmt-network = ">=29.0.0,<30.0.0"
 azure-mgmt-redhatopenshift = ">=2.0.0,<3.0.0"
-azure-mgmt-resource = ">=23.0.1,<24.0.0"
+azure-mgmt-resource = ">=24.0.0,<25.0.0"
 azure-mgmt-subscription = ">=3.1.1,<4.0.0"
 boto3 = ">=1.34.110,<2.0.0"
 click = ">=8.1.4,<9.0.0"
