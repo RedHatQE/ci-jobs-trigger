@@ -2299,21 +2299,20 @@ yaml = ["PyYaml (>=6.0.1)"]
 
 [[package]]
 name = "python-jenkins"
-version = "1.8.2"
+version = "1.8.3"
 description = "Python bindings for the remote Jenkins API"
 optional = false
 python-versions = "*"
 groups = ["main"]
 files = [
-    {file = "python-jenkins-1.8.2.tar.gz", hash = "sha256:56e7dabb0607bdb8e1d6fc6d2d4301abedbed9165da2b206facbd3071cb6eecb"},
-    {file = "python_jenkins-1.8.2-py3-none-any.whl", hash = "sha256:585c9a25042892ce224dcddb1d4b9ff29755ca63da03ac2ce96537d373c0233e"},
+    {file = "python_jenkins-1.8.3-py3-none-any.whl", hash = "sha256:2e1766b253e3b2f28f52abfd0de45ffeaa1191f98520cc8d74d2c317786e59d0"},
+    {file = "python_jenkins-1.8.3.tar.gz", hash = "sha256:8f4761c391ac11e8c1f23f771010920c10440497705ab7175d52358f5a12dc98"},
 ]
 
 [package.dependencies]
 multi-key-dict = "*"
 pbr = ">=0.8.2"
 requests = "*"
-six = ">=1.3.0"
 
 [[package]]
 name = "python-rrmngmnt"
