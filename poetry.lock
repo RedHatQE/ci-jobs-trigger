@@ -75,6 +75,7 @@ description = "Microsoft Azure Management Core Library for Python"
 optional = false
 python-versions = ">=3.8"
 groups = ["main"]
+markers = "python_version == \"3.9\""
 files = [
     {file = "azure_mgmt_core-1.5.0-py3-none-any.whl", hash = "sha256:18aaa5a723ee8ae05bf1bfc9f6d0ffb996631c7ea3c922cc86f522973ce07b5f"},
     {file = "azure_mgmt_core-1.5.0.tar.gz", hash = "sha256:380ae3dfa3639f4a5c246a7db7ed2d08374e88230fd0da3eb899f7c11e5c441a"},
@@ -84,12 +85,29 @@ files = [
 azure-core = ">=1.31.0"
 
 [[package]]
+name = "azure-mgmt-core"
+version = "1.6.0"
+description = "Microsoft Azure Management Core Library for Python"
+optional = false
+python-versions = ">=3.9"
+groups = ["main"]
+markers = "python_version >= \"3.10\""
+files = [
+    {file = "azure_mgmt_core-1.6.0-py3-none-any.whl", hash = "sha256:0460d11e85c408b71c727ee1981f74432bc641bb25dfcf1bb4e90a49e776dbc4"},
+    {file = "azure_mgmt_core-1.6.0.tar.gz", hash = "sha256:b26232af857b021e61d813d9f4ae530465255cb10b3dde945ad3743f7a58e79c"},
+]
+
+[package.dependencies]
+azure-core = ">=1.32.0"
+
+[[package]]
 name = "azure-mgmt-network"
 version = "29.0.0"
 description = "Microsoft Azure Network Management Client Library for Python"
 optional = false
 python-versions = ">=3.9"
 groups = ["main"]
+markers = "python_version == \"3.9\""
 files = [
     {file = "azure_mgmt_network-29.0.0-py3-none-any.whl", hash = "sha256:c04dc0d9f6b936abe4ec7c5fa9cee1514795b1f84d2742dead2115dcde33476c"},
     {file = "azure_mgmt_network-29.0.0.tar.gz", hash = "sha256:577fbc76a195f744b97bac4275e11279f7f3e63c659d98773f3b4a9a6e0943b9"},
@@ -98,6 +116,24 @@ files = [
 [package.dependencies]
 azure-common = ">=1.1"
 azure-mgmt-core = ">=1.5.0"
+isodate = ">=0.6.1"
+typing-extensions = ">=4.6.0"
+
+[[package]]
+name = "azure-mgmt-network"
+version = "30.2.0"
+description = "Microsoft Azure Network Management Client Library for Python"
+optional = false
+python-versions = ">=3.9"
+groups = ["main"]
+markers = "python_version >= \"3.10\""
+files = [
+    {file = "azure_mgmt_network-30.2.0-py3-none-any.whl", hash = "sha256:a87edffd7c38aa9d3494daa8d42914213b0863a9072cf8c7c7e48018b12b6532"},
+    {file = "azure_mgmt_network-30.2.0.tar.gz", hash = "sha256:9b17c259e6344808aaa80a34bbc4b13f16bc01185dd9db137eaa0ae26664861a"},
+]
+
+[package.dependencies]
+azure-mgmt-core = ">=1.6.0"
 isodate = ">=0.6.1"
 typing-extensions = ">=4.6.0"
 
@@ -1213,6 +1249,19 @@ files = [
 ]
 
 [[package]]
+name = "invoke"
+version = "3.0.3"
+description = "Pythonic task execution"
+optional = false
+python-versions = ">=3.9"
+groups = ["main"]
+markers = "python_version >= \"3.10\""
+files = [
+    {file = "invoke-3.0.3-py3-none-any.whl", hash = "sha256:f11327165e5cbb89b2ad1d88d3292b5113332c43b8553b494da435d6ec6f5053"},
+    {file = "invoke-3.0.3.tar.gz", hash = "sha256:437b6a622223824380bfb4e64f612711a6b648c795f565efc8625af66fb57f0c"},
+]
+
+[[package]]
 name = "ipdb"
 version = "0.13.13"
 description = "IPython-enabled pdb"
@@ -1826,6 +1875,7 @@ description = "SSH2 protocol library"
 optional = false
 python-versions = ">=3.6"
 groups = ["main"]
+markers = "python_version == \"3.9\""
 files = [
     {file = "paramiko-3.5.1-py3-none-any.whl", hash = "sha256:43b9a0501fc2b5e70680388d9346cf252cfb7d00b0667c39e80eb43a408b8f61"},
     {file = "paramiko-3.5.1.tar.gz", hash = "sha256:b2c665bc45b2b215bd7d7f039901b14b067da00f3a11e6640995fd58f2664822"},
@@ -1840,6 +1890,25 @@ pynacl = ">=1.5"
 all = ["gssapi (>=1.4.1) ; platform_system != \"Windows\"", "invoke (>=2.0)", "pyasn1 (>=0.1.7)", "pywin32 (>=2.1.8) ; platform_system == \"Windows\""]
 gssapi = ["gssapi (>=1.4.1) ; platform_system != \"Windows\"", "pyasn1 (>=0.1.7)", "pywin32 (>=2.1.8) ; platform_system == \"Windows\""]
 invoke = ["invoke (>=2.0)"]
+
+[[package]]
+name = "paramiko"
+version = "5.0.0"
+description = "SSH2 protocol library"
+optional = false
+python-versions = ">=3.9"
+groups = ["main"]
+markers = "python_version >= \"3.10\""
+files = [
+    {file = "paramiko-5.0.0-py3-none-any.whl", hash = "sha256:b7044611c30140d9a75261653210e2002977b71a0497ff3ba0d98d7edbf62f7c"},
+    {file = "paramiko-5.0.0.tar.gz", hash = "sha256:36763b5b95c2a0dcfdf1abc48e48156ee425b21efe2f0e787c2dd5a95c0e5e79"},
+]
+
+[package.dependencies]
+bcrypt = ">=3.2"
+cryptography = ">=3.3"
+invoke = ">=2.0"
+pynacl = ">=1.5"
 
 [[package]]
 name = "parso"
@@ -2079,13 +2148,14 @@ windows-terminal = ["colorama (>=0.4.6)"]
 
 [[package]]
 name = "pyhelper-utils"
-version = "1.0.18"
+version = "1.0.19"
 description = "Collective utility functions for python projects"
 optional = false
 python-versions = "~=3.9"
 groups = ["main"]
+markers = "python_version == \"3.9\""
 files = [
-    {file = "pyhelper_utils-1.0.18.tar.gz", hash = "sha256:86484170c4c29c7af0271d6d1e3f2c9c1252ed67b9859e3223bb10c434e121a4"},
+    {file = "pyhelper_utils-1.0.19.tar.gz", hash = "sha256:3881aaba7f9310da47b3ff317679f4b301c118ebc50da75943d6e15dd74c2e5e"},
 ]
 
 [package.dependencies]
@@ -2094,6 +2164,27 @@ python-rrmngmnt = ">=0.1.32"
 python-simple-logger = ">=2.0.0,<3"
 requests = ">=2.31.0,<3"
 rich = ">=14,<15"
+
+[[package]]
+name = "pyhelper-utils"
+version = "2.0.3"
+description = "Collective utility functions for python projects"
+optional = false
+python-versions = ">=3.10"
+groups = ["main"]
+markers = "python_version >= \"3.10\""
+files = [
+    {file = "pyhelper_utils-2.0.3.tar.gz", hash = "sha256:364c1391512459a2cb0096926b937f65259c0b7382460f00c971c4eae06ff5d3"},
+]
+
+[package.dependencies]
+ipdb = ">=0.13.13,<0.14"
+paramiko = ">=5,<6"
+python-rrmngmnt = ">=0.1.32"
+python-simple-logger = ">=2.0.0,<3"
+requests = ">=2.31.0,<3"
+rich = ">=15,<16"
+timeout-sampler = ">=0.0.29"
 
 [[package]]
 name = "pyjwt"
@@ -2449,6 +2540,7 @@ description = "Python utilities to manage cloud services, such as AWS."
 optional = false
 python-versions = "<4.0,>=3.9"
 groups = ["main"]
+markers = "python_version == \"3.9\""
 files = [
     {file = "redhat_qe_cloud_tools-2.0.18.tar.gz", hash = "sha256:56855c54ad8ebd05420897472a4c0a9535764fa593f93aef71d5d6a285d1438d"},
 ]
@@ -2467,6 +2559,34 @@ configparser = ">=7.0.0,<8.0.0"
 google-cloud-compute = ">=1.14.1,<2.0.0"
 openshift-python-utilities = ">=6.0.0,<7.0.0"
 pyhelper-utils = ">=1.0.0,<2.0.0"
+python-simple-logger = ">=1.0.5"
+
+[[package]]
+name = "redhat-qe-cloud-tools"
+version = "2.0.20"
+description = "Python utilities to manage cloud services, such as AWS."
+optional = false
+python-versions = "<4,>=3.10"
+groups = ["main"]
+markers = "python_version >= \"3.10\""
+files = [
+    {file = "redhat_qe_cloud_tools-2.0.20.tar.gz", hash = "sha256:c9ba7bb089cdb426999611a886802a2e228926807518a4a18e7319e1d62ed6e1"},
+]
+
+[package.dependencies]
+azure-core = ">=1.30.1,<2"
+azure-identity = ">=1.15.0,<2"
+azure-mgmt-network = ">=30,<31"
+azure-mgmt-redhatopenshift = ">=2.0.0,<3"
+azure-mgmt-resource = ">=24.0.0,<25"
+azure-mgmt-subscription = ">=3.1.1,<4"
+boto3 = ">=1.34.110,<2"
+click = ">=8.1.4,<9"
+colorlog = ">=6.7.0,<7"
+configparser = ">=7.0.0,<8"
+google-cloud-compute = ">=1.14.1,<2"
+openshift-python-utilities = ">=6.0.0,<7"
+pyhelper-utils = ">=2,<3"
 python-simple-logger = ">=1.0.5"
 
 [[package]]
@@ -2532,6 +2652,7 @@ description = "Render rich text, tables, progress bars, syntax highlighting, mar
 optional = false
 python-versions = ">=3.8.0"
 groups = ["main"]
+markers = "python_version == \"3.9\""
 files = [
     {file = "rich-14.0.0-py3-none-any.whl", hash = "sha256:1c9491e1951aac09caffd42f448ee3d04e58923ffe14993f6e83068dc395d7e0"},
     {file = "rich-14.0.0.tar.gz", hash = "sha256:82f1bc23a6a21ebca4ae0c45af9bdbc492ed20231dcb63f297d6d1021a9d5725"},
@@ -2541,6 +2662,26 @@ files = [
 markdown-it-py = ">=2.2.0"
 pygments = ">=2.13.0,<3.0.0"
 typing-extensions = {version = ">=4.0.0,<5.0", markers = "python_version < \"3.11\""}
+
+[package.extras]
+jupyter = ["ipywidgets (>=7.5.1,<9)"]
+
+[[package]]
+name = "rich"
+version = "15.0.0"
+description = "Render rich text, tables, progress bars, syntax highlighting, markdown and more to the terminal"
+optional = false
+python-versions = ">=3.9.0"
+groups = ["main"]
+markers = "python_version >= \"3.10\""
+files = [
+    {file = "rich-15.0.0-py3-none-any.whl", hash = "sha256:33bd4ef74232fb73fe9279a257718407f169c09b78a87ad3d296f548e27de0bb"},
+    {file = "rich-15.0.0.tar.gz", hash = "sha256:edd07a4824c6b40189fb7ac9bc4c52536e9780fbbfbddf6f1e2502c31b068c36"},
+]
+
+[package.dependencies]
+markdown-it-py = ">=2.2.0"
+pygments = ">=2.13.0,<3.0.0"
 
 [package.extras]
 jupyter = ["ipywidgets (>=7.5.1,<9)"]
