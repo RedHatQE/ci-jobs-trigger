@@ -1,20 +1,19 @@
 import os
 import tempfile
 
-from flask import Flask
-from flask import request
-from simple_logger.logger import get_logger
+from flask import Flask, request
 from flask.logging import default_handler
+from simple_logger.logger import get_logger
 
 from ci_jobs_trigger.libs.addons_webhook_trigger.addons_webhook_trigger import (
-    process_hook,
     ADDONS_WEBHOOK_JOBS_TRIGGER_CONFIG_STR,
+    process_hook,
 )
 from ci_jobs_trigger.libs.openshift_ci.re_trigger.re_trigger import JobTriggering
 from ci_jobs_trigger.libs.openshift_ci.zstream_trigger.zstream_trigger import (
     OPENSHIFT_CI_ZSTREAM_TRIGGER_CONFIG_OS_ENV_STR,
-    process_and_trigger_jobs,
     monitor_and_trigger,
+    process_and_trigger_jobs,
 )
 from ci_jobs_trigger.libs.operators_iib_trigger.iib_trigger import run_iib_update
 from ci_jobs_trigger.utils.general import (
