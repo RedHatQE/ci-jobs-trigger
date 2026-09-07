@@ -6,9 +6,9 @@ from simple_logger.logger import get_logger
 
 from ci_jobs_trigger.libs.operators_iib_trigger.iib_trigger import (
     fetch_update_iib_and_trigger_jobs,
+    get_new_iib,
     upload_download_s3_bucket_file,
     verify_s3_or_local_file,
-    get_new_iib,
 )
 
 LOGGER = get_logger("test_operators_iib_trigger")
@@ -33,11 +33,11 @@ class MockRequestGet:
 
 class MockS3Client:
     @staticmethod
-    def download_file(Filename, Bucket, Key):  # noqa N803
+    def download_file(Filename, Bucket, Key):
         return True
 
     @staticmethod
-    def upload_file(Filename, Bucket, Key):  # noqa N803
+    def upload_file(Filename, Bucket, Key):
         return True
 
 

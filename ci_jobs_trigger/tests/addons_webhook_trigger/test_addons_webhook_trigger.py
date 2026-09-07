@@ -1,7 +1,6 @@
 import pytest
 from gitlab import Gitlab
 from gitlab.v4.objects import ProjectManager, ProjectMergeRequestManager
-
 from simple_logger.logger import get_logger
 
 from ci_jobs_trigger.libs.addons_webhook_trigger.addons_webhook_trigger import process_hook
