@@ -5,15 +5,15 @@ from json import JSONDecodeError
 from time import sleep
 
 import requests
+from clouds.aws.session_clients import s3_client
 
 from ci_jobs_trigger.libs.utils.general import trigger_ci_job
 from ci_jobs_trigger.utils.constant import DAYS_TO_SECONDS
 from ci_jobs_trigger.utils.general import (
-    send_slack_message,
-    get_config,
     AddonsWebhookTriggerError,
+    get_config,
+    send_slack_message,
 )
-from clouds.aws.session_clients import s3_client
 
 LOG_PREFIX = "iib-trigger:"
 
@@ -247,15 +247,14 @@ def fetch_update_iib_and_trigger_jobs(logger, tmp_dir, config_dict=None):
         logger.info(f"{LOG_PREFIX} Created temp dir: {local_operators_latest_iib_filepath}")
         config_data["local_operators_latest_iib_filepath"] = local_operators_latest_iib_filepath
 
-        if s3_bucket_operators_latest_iib_path:
-            if not download_iib_file_from_s3_bucket(
-                s3_bucket_operators_latest_iib_path=s3_bucket_operators_latest_iib_path,
-                aws_region=config_data.get("aws_region"),
-                slack_errors_webhook_url=config_data.get("slack_errors_webhook_url"),
-                logger=logger,
-                target_file_path=local_operators_latest_iib_filepath,
-            ):
-                return False
+        if s3_bucket_operators_latest_iib_path and not download_iib_file_from_s3_bucket(
+            s3_bucket_operators_latest_iib_path=s3_bucket_operators_latest_iib_path,
+            aws_region=config_data.get("aws_region"),
+            slack_errors_webhook_url=config_data.get("slack_errors_webhook_url"),
+            logger=logger,
+            target_file_path=local_operators_latest_iib_filepath,
+        ):
+            return False
 
     if (ci_jobs := config_data.get("ci_jobs", {})) is None:
         logger.error(f"{LOG_PREFIX} No ci_jobs found in config")
