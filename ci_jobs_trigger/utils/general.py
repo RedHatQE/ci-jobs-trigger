@@ -2,8 +2,8 @@ import json
 import os
 from multiprocessing import Process
 
-import requests
 import gitlab
+import requests
 from pyaml_env import parse_config
 
 
