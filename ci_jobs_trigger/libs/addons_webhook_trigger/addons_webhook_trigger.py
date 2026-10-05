@@ -1,7 +1,7 @@
 import re
 
 from ci_jobs_trigger.libs.utils.general import trigger_ci_job
-from ci_jobs_trigger.utils.general import get_config, get_gitlab_api, AddonsWebhookTriggerError
+from ci_jobs_trigger.utils.general import AddonsWebhookTriggerError, get_config, get_gitlab_api
 
 ADDONS_WEBHOOK_JOBS_TRIGGER_CONFIG_STR = "ADDONS_WEBHOOK_JOBS_TRIGGER_CONFIG"
 
