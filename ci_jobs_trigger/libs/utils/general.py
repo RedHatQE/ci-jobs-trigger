@@ -1,7 +1,7 @@
+from ci_jobs_trigger.libs.jenkins.utils.general import jenkins_trigger_job
 from ci_jobs_trigger.libs.openshift_ci.utils.constants import GANGWAY_API_URL
 from ci_jobs_trigger.libs.openshift_ci.utils.general import openshift_ci_trigger_job
-from ci_jobs_trigger.libs.jenkins.utils.general import jenkins_trigger_job
-from ci_jobs_trigger.utils.general import send_slack_message, AddonsWebhookTriggerError
+from ci_jobs_trigger.utils.general import AddonsWebhookTriggerError, send_slack_message
 
 
 def dict_to_str(_dict):
