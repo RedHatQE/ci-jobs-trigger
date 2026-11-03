@@ -674,6 +674,7 @@ files = [
     {file = "coverage-7.8.1-py3-none-any.whl", hash = "sha256:e54b80885b0e61d346accc5709daf8762471a452345521cc9281604a907162c2"},
     {file = "coverage-7.8.1.tar.gz", hash = "sha256:d41d4da5f2871b1782c6b74948d2d37aac3a5b39b43a6ba31d736b97a02ae1f1"},
 ]
+markers = {main = "python_version < \"3.11\""}
 
 [package.dependencies]
 tomli = {version = "*", optional = true, markers = "python_full_version <= \"3.11.0a6\" and extra == \"toml\""}
@@ -1704,11 +1705,38 @@ urllib3 = ">=1.25.3"
 
 [[package]]
 name = "openshift-cluster-management-python-wrapper"
+version = "1.0.140"
+description = "Wrapper around https://github.com/openshift/openshift-cluster-management-python-client"
+optional = false
+python-versions = "<4.0,>=3.8"
+groups = ["main"]
+markers = "python_version >= \"3.11\""
+files = [
+    {file = "openshift_cluster_management_python_wrapper-1.0.140.tar.gz", hash = "sha256:619852226ae4f9b174758936887ef758bdf22aae982dfb639884ccba578323ce"},
+]
+
+[package.dependencies]
+colorlog = ">=6.7.0,<7.0.0"
+importlib = ">=1.0.4,<2.0.0"
+openshift-cluster-management-python-client = ">=1.0.23"
+openshift-python-utilities = ">=5.0.0"
+openshift-python-wrapper = ">=10.0.0"
+python-benedict = ">=0.34.0"
+python-simple-logger = ">=1.0.5"
+pyyaml = ">=6.0.1,<7.0.0"
+redhat-qe-cloud-tools = ">=1.0.10"
+requests = ">=2.31.0,<3.0.0"
+rosa-python-client = ">=1.0.28"
+timeout-sampler = ">=0.0.2"
+
+[[package]]
+name = "openshift-cluster-management-python-wrapper"
 version = "1.0.150"
 description = "Wrapper around https://github.com/openshift/openshift-cluster-management-python-client"
 optional = false
 python-versions = "<4.0,>=3.8"
 groups = ["main"]
+markers = "python_version < \"3.11\""
 files = [
     {file = "openshift_cluster_management_python_wrapper-1.0.150.tar.gz", hash = "sha256:ce00cecb1f19ac134aa4e0caf1213e30cf89c7039e54124225eff15818d68144"},
 ]
@@ -2178,6 +2206,7 @@ files = [
     {file = "pytest_cov-6.3.0-py3-none-any.whl", hash = "sha256:440db28156d2468cafc0415b4f8e50856a0d11faefa38f30906048fe490f1749"},
     {file = "pytest_cov-6.3.0.tar.gz", hash = "sha256:35c580e7800f87ce892e687461166e1ac2bcb8fb9e13aea79032518d6e503ff2"},
 ]
+markers = {main = "python_version < \"3.11\""}
 
 [package.dependencies]
 coverage = {version = ">=7.5", extras = ["toml"]}
@@ -2198,6 +2227,7 @@ files = [
     {file = "pytest_mock-3.15.0-py3-none-any.whl", hash = "sha256:ef2219485fb1bd256b00e7ad7466ce26729b30eadfc7cbcdb4fa9a92ca68db6f"},
     {file = "pytest_mock-3.15.0.tar.gz", hash = "sha256:ab896bd190316b9d5d87b277569dfcdf718b2d049a2ccff5f7aca279c002a1cf"},
 ]
+markers = {main = "python_version < \"3.11\""}
 
 [package.dependencies]
 pytest = ">=6.2.5"
@@ -2228,6 +2258,7 @@ description = "python-benedict is a dict subclass with keylist/keypath/keyattr s
 optional = false
 python-versions = "*"
 groups = ["main"]
+markers = "python_version < \"3.11\""
 files = [
     {file = "python-benedict-0.33.2.tar.gz", hash = "sha256:662de43bffb4e127da2056447f8ddd7f6f5c89b72dd66d289cf9abd1cc2720c8"},
     {file = "python_benedict-0.33.2-py3-none-any.whl", hash = "sha256:50a69b601b34d4ad7b67fe94e3266ec05046bc547a4132fe43fd8fbd41aeefaa"},
@@ -2247,6 +2278,35 @@ s3 = ["boto3 (>=1.24.89,<2.0.0)"]
 toml = ["toml (>=0.10.2,<1.0.0)"]
 xls = ["openpyxl (>=3.0.0,<4.0.0)", "xlrd (>=2.0.0,<3.0.0)"]
 xml = ["xmltodict (>=0.12.0,<1.0.0)"]
+yaml = ["pyyaml (>=6.0,<7.0)"]
+
+[[package]]
+name = "python-benedict"
+version = "0.40.1"
+description = "python-benedict is a dict subclass with keylist/keypath/keyattr support, normalized I/O operations (base64, csv, ini, json, pickle, plist, query-string, toml, xls, xml, yaml) and many utilities... for humans, obviously."
+optional = false
+python-versions = ">=3.11"
+groups = ["main"]
+markers = "python_version >= \"3.11\""
+files = [
+    {file = "python_benedict-0.40.1-py3-none-any.whl", hash = "sha256:23d20f9dd99625ed12cc4fa59cb3b46ea6987ce502b1219ddb84d6947a427f49"},
+    {file = "python_benedict-0.40.1.tar.gz", hash = "sha256:2a6feb884b6055e0b1669d5d2ff838d01d7dbe29f3982e4c86886979e1967e6d"},
+]
+
+[package.dependencies]
+python-slugify = ">=7.0.0,<10.0.0"
+typing_extensions = ">=4.13.2,<4.17.0"
+
+[package.extras]
+all = ["python-benedict[io,parse,s3,schema]"]
+html = ["beautifulsoup4 (>=4.12.0,<5.0.0)", "python-benedict[xml]"]
+io = ["python-benedict[html,toml,xls,xml,yaml]", "python-fsutil (>=0.17.0,<1.0.0)", "requests (>=2.33.0,<3.0.0)"]
+parse = ["ftfy (>=6.0.0,<7.0.0)", "mailchecker (>=4.1.0,<7.0.0)", "phonenumbers (>=8.12.0,<10.0.0)", "python-dateutil (>=2.8.0,<3.0.0)"]
+s3 = ["boto3 (>=1.24.89,<2.0.0)", "python-fsutil (>=0.17.0,<1.0.0)"]
+schema = ["pydantic (>=2.0.0,<3.0.0)"]
+toml = ["tomli-w (>=1.0.0,<2.0.0)"]
+xls = ["openpyxl (>=3.0.0,<4.0.0)", "python-fsutil (>=0.17.0,<1.0.0)", "xlrd (>=2.0.0,<3.0.0)"]
+xml = ["xmltodict (>=0.12.0,<2.0.0)"]
 yaml = ["pyyaml (>=6.0,<7.0)"]
 
 [[package]]
@@ -2271,6 +2331,7 @@ description = "high-level file-system operations for lazy devs."
 optional = false
 python-versions = "*"
 groups = ["main"]
+markers = "python_version < \"3.11\""
 files = [
     {file = "python_fsutil-0.15.0-py3-none-any.whl", hash = "sha256:8ae31def522916e35caf67723b8526fe6e5fcc1e160ea2dc23c845567708ca6e"},
     {file = "python_fsutil-0.15.0.tar.gz", hash = "sha256:b51d8ab7ee218314480ea251fff7fef513be4fbccfe72a5af4ff2954f8a4a2c4"},
@@ -2552,6 +2613,7 @@ description = "Wrapper for rosa cli"
 optional = false
 python-versions = "<4.0,>=3.9"
 groups = ["main"]
+markers = "python_version < \"3.11\""
 files = [
     {file = "rosa_python_client-2.0.15.tar.gz", hash = "sha256:c98be1ee1725b53a7e7e6426d69839a6117dc73d8ee061b6dfd06e5417bbf477"},
 ]
@@ -2562,6 +2624,24 @@ openshift-cluster-management-python-wrapper = "*"
 pytest-cov = ">=6.0.0,<7.0.0"
 pytest-mock = ">=3.14.0,<4.0.0"
 python-benedict = "0.33.2"
+python-simple-logger = ">=1.0.5"
+redhat-qe-cloud-tools = ">=1.0.19"
+
+[[package]]
+name = "rosa-python-client"
+version = "2.0.17"
+description = "Wrapper for rosa cli"
+optional = false
+python-versions = ">=3.11"
+groups = ["main"]
+markers = "python_version >= \"3.11\""
+files = [
+    {file = "rosa_python_client-2.0.17.tar.gz", hash = "sha256:5eae356f7ee11c1da1b9886f93887baaf5d89ca7b495c2f2583c323f63bc4e62"},
+]
+
+[package.dependencies]
+openshift-cluster-management-python-wrapper = "*"
+python-benedict = "0.40.1"
 python-simple-logger = ">=1.0.5"
 redhat-qe-cloud-tools = ">=1.0.19"
 
