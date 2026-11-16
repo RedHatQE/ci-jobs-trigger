@@ -4,7 +4,6 @@ import datetime
 import json
 import logging
 import time
-from typing import Dict, List
 
 import packaging.version
 import yaml
@@ -23,7 +22,7 @@ OPENSHIFT_CI_ZSTREAM_TRIGGER_CONFIG_OS_ENV_STR: str = "OPENSHIFT_CI_ZSTREAM_TRIG
 LOG_PREFIX: str = "Zstream trigger:"
 
 
-def processed_versions_file(processed_versions_file_path: str, logger: logging.Logger) -> Dict:
+def processed_versions_file(processed_versions_file_path: str, logger: logging.Logger) -> dict:
     try:
         with open(processed_versions_file_path) as fd:
             return json.load(fd)
@@ -57,7 +56,7 @@ def already_processed_version(
     return False
 
 
-def get_gitlab_project_file(config: Dict, ocm_env: str) -> Dict:
+def get_gitlab_project_file(config: dict, ocm_env: str) -> dict:
     api = get_gitlab_api(url=config["gitlab_url"], token=config["gitlab_token"])
     project = api.projects.get(config["gitlab_project"])
     project_file_content = project.files.get(
@@ -66,7 +65,7 @@ def get_gitlab_project_file(config: Dict, ocm_env: str) -> Dict:
     return yaml.safe_load(project_file_content.decode().decode("utf-8"))
 
 
-def is_rosa_version_enabled(config: Dict, version: str, channel: str, ocm_env: str, logger: logging.Logger) -> bool:
+def is_rosa_version_enabled(config: dict, version: str, channel: str, ocm_env: str, logger: logging.Logger) -> bool:
     processed_versions_file_path = config["processed_versions_file_path"]
     processed_versions_file_content = processed_versions_file(
         processed_versions_file_path=processed_versions_file_path, logger=logger
@@ -87,8 +86,8 @@ def is_rosa_version_enabled(config: Dict, version: str, channel: str, ocm_env: s
     return False
 
 
-def filter_rosa_versions_by_channel(all_rosa_versions: Dict, rosa_channel: str, version_channel: str) -> Dict:
-    filtered_rosa_dict: Dict[str, Dict[str, List[str]]] = {version_channel: {}}
+def filter_rosa_versions_by_channel(all_rosa_versions: dict, rosa_channel: str, version_channel: str) -> dict:
+    filtered_rosa_dict: dict[str, dict[str, list[str]]] = {version_channel: {}}
     for version_key, versions in all_rosa_versions[rosa_channel].items():
         filtered_rosa_dict[version_channel][version_key] = [ver for ver in versions if version_channel in ver]
 
@@ -97,7 +96,7 @@ def filter_rosa_versions_by_channel(all_rosa_versions: Dict, rosa_channel: str, 
 
 def get_all_rosa_versions(
     ocm_token: str, ocm_env: str, rosa_channel: str, version_channel: str, aws_region: str
-) -> Dict[str, Dict[str, List[str]]]:
+) -> dict[str, dict[str, list[str]]]:
     ocm_client = OCMPythonClient(
         token=ocm_token,
         endpoint="https://sso.redhat.com/auth/realms/redhat-external/protocol/openid-connect/token",
@@ -115,9 +114,9 @@ def get_all_rosa_versions(
     return _all_rosa_versions
 
 
-def trigger_jobs(config: Dict, jobs: List, logger: logging.Logger, zstream_version: str) -> bool:
-    failed_triggers_jobs: List = []
-    successful_triggers_jobs: List = []
+def trigger_jobs(config: dict, jobs: list, logger: logging.Logger, zstream_version: str) -> bool:
+    failed_triggers_jobs: list = []
+    successful_triggers_jobs: list = []
     if not jobs:
         no_jobs_mgs: str = f"{LOG_PREFIX} No jobs to trigger"
         logger.info(no_jobs_mgs)
@@ -160,8 +159,8 @@ def trigger_jobs(config: Dict, jobs: List, logger: logging.Logger, zstream_versi
     return False
 
 
-def process_and_trigger_jobs(logger: logging.Logger, version: str | None = None) -> Dict:
-    trigger_res: Dict = {}
+def process_and_trigger_jobs(logger: logging.Logger, version: str | None = None) -> dict:
+    trigger_res: dict = {}
     config = get_config(
         os_environ=OPENSHIFT_CI_ZSTREAM_TRIGGER_CONFIG_OS_ENV_STR,
         logger=logger,
@@ -305,7 +304,7 @@ def monitor_and_trigger(logger: logging.Logger) -> None:
             time.sleep(DAYS_TO_SECONDS)
 
 
-def get_cron_iter(cron_schedule: str, config: Dict, logger: logging.Logger) -> croniter | None:
+def get_cron_iter(cron_schedule: str, config: dict, logger: logging.Logger) -> croniter | None:
     try:
         return croniter(cron_schedule, start_time=datetime.datetime.now(), day_or=False)
     except CroniterBadCronError:
